@@ -1,0 +1,728 @@
+.phoneWrapper {
+  width: 100%;
+  max-width: 385px;
+  height: 760px;
+  background: var(--bg-surface-solid);
+  border-radius: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 
+              0 0 0 12px #e5e7eb, 
+              0 0 0 13px #d1d5db;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="dark"] .phoneWrapper {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 
+              0 0 0 12px #1f2937, 
+              0 0 0 13px #374151;
+}
+
+.phoneNotch {
+  width: 130px;
+  height: 24px;
+  background: #e5e7eb;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+[data-theme="dark"] .phoneNotch {
+  background: #1f2937;
+}
+
+.speakerBar {
+  width: 50px;
+  height: 4px;
+  background: #9ca3af;
+  border-radius: 2px;
+  margin-bottom: 2px;
+}
+
+.statusBar {
+  height: 40px;
+  padding: 12px 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  z-index: 99;
+  background: transparent;
+}
+
+.statusIcons {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.muteToggleBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  padding: 2px;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+}
+
+.muteToggleBtn:hover {
+  color: var(--accent-primary);
+}
+
+.appHeader {
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-surface);
+}
+
+.headerBtn {
+  background: var(--bg-surface-solid);
+  border: 1px solid var(--border-color);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+}
+
+.headerBtn:hover {
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--accent-primary);
+}
+
+.headerTitleWrapper {
+  text-align: center;
+}
+
+.headerTitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.2;
+}
+
+.headerSubtitle {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.screenContent {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 16px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.screenContent::-webkit-scrollbar {
+  display: none;
+}
+
+/* Vehicle Switcher Header */
+.vehicleSwitcher {
+  display: flex;
+  gap: 6px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  padding: 4px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.vehiclePill {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  padding: 6px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.vehiclePillActive {
+  background: var(--bg-surface-solid);
+  color: var(--accent-primary);
+  box-shadow: var(--shadow-sm);
+  font-weight: 700;
+}
+
+/* Vehicle 3D Stage */
+.vehicleDisplay {
+  height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 10px;
+  cursor: grab;
+}
+
+.vehicleDisplay:active {
+  cursor: grabbing;
+}
+
+.busImage {
+  object-fit: contain;
+  filter: drop-shadow(0 20px 20px rgba(0, 0, 0, 0.25));
+  border-radius: 8px;
+}
+
+.busImageGlow {
+  position: absolute;
+  width: 180px;
+  height: 25px;
+  background: radial-gradient(ellipse, rgba(37, 99, 235, 0.35) 0%, rgba(37, 99, 235, 0) 70%);
+  bottom: 12px;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.vehicleMetaBadge {
+  position: absolute;
+  bottom: 0;
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent-primary);
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+
+.statsCard {
+  background: var(--bg-surface);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  text-align: center;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.statLabel {
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.statDivider {
+  width: 1px;
+  background: var(--border-color);
+  height: 80%;
+  align-self: center;
+}
+
+.lastUpdated {
+  text-align: center;
+  font-size: 0.62rem;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.controlsGrid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-top: 6px;
+}
+
+.mainDialWrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainDial {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--bg-surface-solid);
+  border: 3px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: all 0.25s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.mainDialActive {
+  background: var(--accent-primary);
+  color: white;
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.6);
+}
+
+.mainDialLabel {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.satelliteButtons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.satelliteBtn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 10px 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.satelliteBtn:hover {
+  background: var(--bg-surface-solid);
+  color: var(--accent-primary);
+}
+
+.satelliteBtnActive {
+  background: rgba(37, 99, 235, 0.12);
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  font-weight: 700;
+}
+
+.satelliteBtnLabel {
+  font-size: 0.62rem;
+  font-weight: 600;
+}
+
+.bottomActionBtn {
+  margin-top: 14px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+
+.bottomActionBtn:hover {
+  background: var(--bg-surface-solid);
+  color: var(--accent-primary);
+  border-color: var(--accent-primary);
+}
+
+/* Secondary Panels */
+.secondaryPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+
+.panelTitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-primary);
+}
+
+/* GPS Route Navigation */
+.mapContainer {
+  height: 190px;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid var(--border-color);
+  background: #e5e9f0;
+}
+
+[data-theme="dark"] .mapContainer {
+  background: #1e2530;
+}
+
+.mapSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mapStopNode {
+  fill: var(--bg-surface-solid);
+  stroke: var(--accent-primary);
+  stroke-width: 2px;
+}
+
+.mapStopNodeActive {
+  fill: var(--accent-primary);
+  filter: drop-shadow(0 0 4px var(--accent-primary));
+}
+
+.mapBusIndicator {
+  fill: var(--accent-primary);
+  filter: drop-shadow(0 0 6px var(--accent-primary));
+}
+
+.mapStatsCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  padding: 12px 14px;
+}
+
+.mapLogItem {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.mapLogItem:last-child {
+  border-bottom: none;
+}
+
+/* Ticketing Desk */
+.ticketForm {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ticketSelect {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface-solid);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  outline: none;
+}
+
+.checkoutBtn {
+  width: 100%;
+  background: var(--accent-primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: opacity 0.2s ease;
+}
+
+.checkoutBtn:hover {
+  opacity: 0.92;
+}
+
+.receiptCard {
+  background: var(--bg-surface-solid);
+  border: 1px dashed var(--accent-primary);
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+}
+
+.ticketBadge {
+  font-size: 0.65rem;
+  background: rgba(37, 99, 235, 0.08);
+  color: var(--accent-primary);
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 700;
+}
+
+.ticketGrid {
+  margin: 12px 0;
+  text-align: left;
+  font-size: 0.72rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.barcodeSim {
+  height: 32px;
+  background: linear-gradient(90deg, 
+    #111 0%, #111 5%, 
+    transparent 5%, transparent 8%, 
+    #111 8%, #111 15%, 
+    transparent 15%, transparent 20%, 
+    #111 20%, #111 22%, 
+    transparent 22%, transparent 26%, 
+    #111 26%, #111 35%, 
+    transparent 35%, transparent 40%, 
+    #111 40%, #111 42%, 
+    transparent 42%, transparent 50%, 
+    #111 50%, #111 60%, 
+    transparent 60%, transparent 63%, 
+    #111 63%, #111 75%, 
+    transparent 75%, transparent 80%, 
+    #111 80%, #111 90%, 
+    transparent 90%, transparent 92%, 
+    #111 92%, #111 100%
+  );
+  margin-top: 6px;
+}
+
+[data-theme="dark"] .barcodeSim {
+  filter: invert(1);
+}
+
+/* RFID Attendance Scanner */
+.scannerCard {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  padding: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.scannerTarget {
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  border: 2px dashed var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.scanLine {
+  position: absolute;
+  width: 90%;
+  height: 2px;
+  background: var(--accent-primary);
+  box-shadow: 0 0 8px var(--accent-primary);
+  top: 10%;
+  animation: scanMotion 2s infinite ease-in-out;
+}
+
+@keyframes scanMotion {
+  0%, 100% { top: 10%; }
+  50% { top: 90%; }
+}
+
+.scanLog {
+  background: var(--bg-surface-solid);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  text-align: left;
+  max-height: 140px;
+  overflow-y: auto;
+}
+
+.scanLogRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.68rem;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.scanLogRow:last-child {
+  border-bottom: none;
+}
+
+/* SOS Console */
+.sosContainer {
+  text-align: center;
+  padding: 18px;
+  border-radius: 20px;
+  border: 2px solid var(--accent-danger);
+  background: rgba(239, 68, 68, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  animation: borderFlicker 1.5s infinite alternate;
+}
+
+@keyframes borderFlicker {
+  0% { border-color: rgba(239, 68, 68, 0.3); box-shadow: 0 0 5px rgba(239, 68, 68, 0.1); }
+  100% { border-color: rgba(239, 68, 68, 1); box-shadow: 0 0 15px rgba(239, 68, 68, 0.3); }
+}
+
+.sosBtn {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: var(--accent-danger);
+  border: 6px solid rgba(239, 68, 68, 0.3);
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+  color: white;
+  font-weight: 800;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.sosBtnActive {
+  background: #b91c1c;
+  transform: scale(0.95);
+  box-shadow: 0 0 35px rgba(239, 68, 68, 0.9);
+}
+
+.sosActiveAlert {
+  background: var(--accent-danger);
+  color: white;
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  animation: pulseSOS 1s infinite alternate;
+}
+
+@keyframes pulseSOS {
+  0% { opacity: 0.85; }
+  100% { opacity: 1; }
+}
+
+/* Phone Bottom Nav Bar */
+.phoneNavBar {
+  height: 60px;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-surface);
+  backdrop-filter: blur(12px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 6px;
+}
+
+.navBarItem {
+  background: transparent;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease;
+  position: relative;
+  padding: 4px 8px;
+}
+
+.navBarItemActive {
+  color: var(--accent-primary);
+}
+
+.navBarItemLabel {
+  font-size: 0.6rem;
+  font-weight: 600;
+  margin-top: 2px;
+}
+
+.badgeDot {
+  position: absolute;
+  top: 2px;
+  right: 6px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-danger);
+  border-radius: 50%;
+}
