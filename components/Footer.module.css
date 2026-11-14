@@ -42,8 +42,8 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--accent-primary);
-  box-shadow: 0 0 8px var(--accent-primary);
+  background: var(--accent-lime);
+  box-shadow: 0 0 8px var(--accent-lime);
 }
 
 .brandName {
@@ -59,7 +59,7 @@
 }
 
 .attribution strong {
-  color: var(--accent-primary);
+  color: var(--accent-lime);
   font-weight: 700;
 }
 

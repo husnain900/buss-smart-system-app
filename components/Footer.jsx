@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Footer.module.css";
-import { AwardIcon, ShieldIcon, RadioIcon, SparklesIcon } from "./icons/Icons";
+import { AwardIcon, ShieldIcon, RadioIcon, SparklesIcon, BookOpenIcon, BusIcon } from "./icons/Icons";
 
 export default function Footer({ onOpenAbout, onSelectView }) {
   const currentYear = new Date().getFullYear();
@@ -12,7 +12,7 @@ export default function Footer({ onOpenAbout, onSelectView }) {
           <div className={styles.brandSection}>
             <div className={styles.brandTitle}>
               <span className={styles.brandDot} />
-              <span className={styles.brandName}>Bus Smart System Application</span>
+              <span className={styles.brandName}>NEBULA TRANSIT &bull; Bus Smart System Platform</span>
             </div>
             <p className={styles.attribution}>
               Designed &amp; Engineered by <strong>Ayesha Batool</strong> - Roll No: <strong>M245004</strong>
@@ -26,7 +26,7 @@ export default function Footer({ onOpenAbout, onSelectView }) {
             <div className={styles.statusIndicator}>
               <span className={styles.statusPulse} />
               <RadioIcon size={14} className={styles.statusIcon} />
-              <span className={styles.statusText}>IoT Telemetry Online</span>
+              <span className={styles.statusText}>Simulated Telemetry Engine Online</span>
             </div>
 
             <div className={styles.navLinks}>
@@ -44,18 +44,20 @@ export default function Footer({ onOpenAbout, onSelectView }) {
                   <button
                     type="button"
                     className={styles.footerLink}
-                    onClick={() => onSelectView("reader")}
+                    onClick={() => onSelectView("thesis")}
                     aria-label="View Thesis Documentation"
                   >
+                    <BookOpenIcon size={14} />
                     <span>Thesis Document</span>
                   </button>
                   <button
                     type="button"
                     className={styles.footerLink}
-                    onClick={() => onSelectView("dashboard")}
+                    onClick={() => onSelectView("fleet")}
                     aria-label="Open Fleet Simulator"
                   >
-                    <span>Live Simulator</span>
+                    <BusIcon size={14} />
+                    <span>Fleet Control Room</span>
                   </button>
                 </>
               )}
@@ -65,15 +67,15 @@ export default function Footer({ onOpenAbout, onSelectView }) {
 
         <div className={styles.bottomBar}>
           <span className={styles.copyText}>
-            &copy; {currentYear} Ayesha Batool (M245004). Bachelor of Science in Computer Science Thesis Project.
+            &copy; {currentYear} Ayesha Batool (M245004). Bachelor of Science in Computer Science Academic Thesis Project.
           </span>
           <div className={styles.badgeRow}>
-            <span className={styles.techBadge}>Enterprise Grade</span>
-            <span className={styles.techBadge}>IoT Automotive Ready</span>
+            <span className={styles.techBadge}>Industrial Tech UI</span>
+            <span className={styles.techBadge}>Simulated IoT Telemetry</span>
+            <span className={styles.techBadge}>Safety Interlock Protected</span>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

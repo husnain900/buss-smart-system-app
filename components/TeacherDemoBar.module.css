@@ -1,0 +1,141 @@
+.demoBarWrap {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-card);
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  box-shadow: var(--shadow-md);
+}
+
+.barHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.headerIcon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent-lime-dim);
+  color: var(--accent-lime);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.barTitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.barSubtitle {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.resetBtn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.resetBtn:hover {
+  color: var(--accent-lime);
+  border-color: var(--accent-lime);
+}
+
+.scenariosGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.scenarioCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 10px 12px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scenarioCard:hover {
+  border-color: var(--border-focus);
+  transform: translateY(-1px);
+}
+
+.scenarioCardActive {
+  border-color: var(--accent-lime);
+  background: rgba(214, 244, 90, 0.08);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cardIcon {
+  color: var(--accent-lime);
+  display: flex;
+  align-items: center;
+}
+
+.cardLabel {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.activePill {
+  font-size: 0.58rem;
+  font-weight: 800;
+  background: var(--accent-lime);
+  color: #0B1018;
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.cardDesc {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  line-height: 1.3;
+}
+
+@media (max-width: 900px) {
+  .scenariosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .scenariosGrid {
+    grid-template-columns: 1fr;
+  }
+}

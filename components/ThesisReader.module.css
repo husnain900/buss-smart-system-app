@@ -1,39 +1,38 @@
 .readerContainer {
   display: flex;
-  height: 100%;
+  min-height: 750px;
   position: relative;
-  background: var(--bg-surface-solid);
-  border-radius: 24px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-card);
   overflow: hidden;
-  box-shadow: var(--shadow-xl);
+  box-shadow: var(--shadow-md);
   border: 1px solid var(--border-color);
 }
 
 .sidebar {
-  width: 280px;
+  width: 290px;
   border-right: 1px solid var(--border-color);
-  background: var(--bg-surface);
-  backdrop-filter: blur(8px);
+  background: #0E1520;
   display: flex;
   flex-direction: column;
-  height: 100%;
   flex-shrink: 0;
 }
 
 .sidebarHeader {
-  padding: 24px;
+  padding: 20px 22px;
   border-bottom: 1px solid var(--border-color);
 }
 
 .sidebarTitle {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--accent-primary);
-  margin-bottom: 4px;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--accent-lime);
+  margin-bottom: 2px;
 }
 
 .sidebarSubtitle {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -46,25 +45,24 @@
 
 .searchInput {
   width: 100%;
-  padding: 10px 14px;
-  border-radius: 12px;
+  padding: 8px 12px;
+  border-radius: 8px;
   border: 1px solid var(--border-color);
-  background: var(--bg-surface-solid);
+  background: var(--bg-card);
   color: var(--text-primary);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   outline: none;
   transition: all 0.2s ease;
 }
 
 .searchInput:focus {
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+  border-color: var(--accent-lime);
 }
 
 .navMenu {
   flex: 1;
   overflow-y: auto;
-  padding: 16px 8px;
+  padding: 14px 10px;
 }
 
 .navSection {
@@ -72,12 +70,12 @@
 }
 
 .navSectionTitle {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   text-transform: uppercase;
   color: var(--text-muted);
-  padding: 0 16px;
+  padding: 0 12px;
   margin-bottom: 6px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.05em;
 }
 
@@ -85,35 +83,37 @@
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 10px 16px;
+  padding: 8px 12px;
   border: none;
   background: transparent;
   color: var(--text-secondary);
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   text-align: left;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-bottom: 2px;
+  min-height: 36px;
 }
 
 .navItem:hover {
-  background: rgba(37, 99, 235, 0.05);
+  background: rgba(255, 255, 255, 0.04);
   color: var(--text-primary);
 }
 
 .activeNavItem {
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--accent-primary);
-  font-weight: 600;
+  background: var(--accent-lime-dim);
+  color: var(--accent-lime);
+  font-weight: 700;
+  border: 1px solid rgba(214, 244, 90, 0.25);
 }
 
 .chapterNum {
   font-family: var(--font-display);
-  font-size: 0.75rem;
-  font-weight: 700;
-  background: rgba(37, 99, 235, 0.1);
-  color: var(--accent-primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  background: var(--accent-lime-dim);
+  color: var(--accent-lime);
   padding: 2px 6px;
   border-radius: 4px;
   margin-right: 8px;
@@ -122,14 +122,13 @@
 .contentArea {
   flex: 1;
   overflow-y: auto;
-  padding: 40px;
+  padding: 36px 40px;
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
 
 .contentWrapper {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   width: 100%;
   position: relative;
@@ -142,73 +141,76 @@
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 80%;
   padding: 20px 0;
 }
 
 .coverBadge {
-  background: rgba(37, 99, 235, 0.08);
-  color: var(--accent-primary);
+  background: var(--accent-lime-dim);
+  color: var(--accent-lime);
+  border: 1px solid rgba(214, 244, 90, 0.3);
   padding: 6px 16px;
-  border-radius: 30px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-bottom: 24px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 20px;
   letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
 .coverTitle {
   font-family: var(--font-display);
-  font-size: 2.75rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: var(--text-primary);
   margin-bottom: 12px;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 .coverSubtitle {
-  font-size: 1.25rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
-  margin-bottom: 40px;
-  font-weight: 400;
+  margin-bottom: 32px;
+  line-height: 1.5;
 }
 
 .metaBlock {
-  border-top: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color);
-  padding: 24px 0;
-  margin-bottom: 40px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 32px;
   width: 100%;
-  max-width: 500px;
+  max-width: 560px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
+  text-align: left;
 }
 
 .metaLabel {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
   text-transform: uppercase;
   margin-bottom: 4px;
   letter-spacing: 0.05em;
+  font-weight: 700;
 }
 
 .metaValue {
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 0.95rem;
+  font-weight: 700;
   color: var(--text-primary);
 }
 
 .institutionBlock {
   font-family: var(--font-display);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--text-secondary);
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .institutionUni {
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text-primary);
   margin-top: 4px;
 }
@@ -222,26 +224,18 @@
 
 .docTitle {
   font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.75rem;
+  font-weight: 800;
   color: var(--text-primary);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .docSub {
-  font-size: 0.875rem;
-  color: var(--text-muted);
+  font-size: 0.75rem;
+  color: var(--accent-lime);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-}
-
-.chapterTitle {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  color: var(--text-primary);
-  margin-bottom: 20px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border-color);
+  font-weight: 700;
 }
 
 .sectionBlock {
@@ -251,8 +245,9 @@
 
 .sectionTitle {
   font-family: var(--font-display);
-  font-size: 1.25rem;
-  color: var(--accent-primary);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent-lime);
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -261,7 +256,7 @@
 
 .sectionContent {
   color: var(--text-secondary);
-  font-size: 1rem;
+  font-size: 0.92rem;
   line-height: 1.7;
   white-space: pre-line;
 }
@@ -270,59 +265,47 @@
   margin-bottom: 12px;
 }
 
-.sectionContent ul {
-  margin-left: 20px;
-  margin-bottom: 16px;
-  list-style-type: square;
-}
-
-.sectionContent li {
-  margin-bottom: 6px;
-}
-
-/* Interactive link inside thesis text */
 .interactiveBadge {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background: rgba(37, 99, 235, 0.08);
-  color: var(--accent-primary);
-  border: 1px solid rgba(37, 99, 235, 0.2);
+  background: var(--accent-lime-dim);
+  color: var(--accent-lime);
+  border: 1px solid rgba(214, 244, 90, 0.3);
   padding: 4px 10px;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
+  border-radius: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.2s ease;
   margin-top: 8px;
 }
 
 .interactiveBadge:hover {
-  background: var(--accent-primary);
-  color: #ffffff;
+  background: var(--accent-lime);
+  color: #0B1018;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .searchResultsTitle {
-  font-size: 1.1rem;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 20px;
-  font-weight: 600;
+  margin-bottom: 18px;
 }
 
 .searchResultItem {
-  padding: 16px;
-  border-radius: 12px;
+  background: var(--bg-card);
+  padding: 14px 16px;
+  border-radius: 10px;
   border: 1px solid var(--border-color);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .searchResultItem:hover {
-  background: rgba(37, 99, 235, 0.03);
-  border-color: var(--accent-primary);
+  border-color: var(--accent-lime);
 }
 
 .searchResultHeader {
@@ -332,21 +315,21 @@
 }
 
 .searchResultTitleName {
-  font-weight: 600;
-  color: var(--accent-primary);
-  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent-lime);
+  font-size: 0.88rem;
 }
 
 .searchResultChapter {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   color: var(--text-muted);
-  background: rgba(0, 0, 0, 0.05);
+  background: rgba(255, 255, 255, 0.05);
   padding: 2px 6px;
   border-radius: 4px;
 }
 
 .searchResultSnippet {
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -359,7 +342,7 @@
   text-align: center;
   padding: 40px 0;
   color: var(--text-muted);
-  font-size: 0.95rem;
+  font-size: 0.85rem;
 }
 
 @media (max-width: 900px) {
@@ -369,9 +352,16 @@
   
   .sidebar {
     width: 100%;
-    height: auto;
-    max-height: 250px;
+    max-height: 240px;
     border-right: none;
     border-bottom: 1px solid var(--border-color);
+  }
+
+  .contentArea {
+    padding: 20px 16px;
+  }
+
+  .metaBlock {
+    grid-template-columns: 1fr;
   }
 }

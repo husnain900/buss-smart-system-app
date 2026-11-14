@@ -48,10 +48,10 @@ export default function AboutModal({ isOpen, onClose }) {
                   <span>Academic Thesis &amp; Engineering Project</span>
                 </div>
                 <h2 id="modal-title" className={styles.title}>
-                  Bus Smart System &amp; Fleet Management
+                  NEBULA TRANSIT &bull; Smart Bus Fleet Platform
                 </h2>
                 <p className={styles.subtitle}>
-                  Gomal University Faisalabad &bull; Department of Computer Science
+                  Gomal University Faisalabad &bull; Department of Computer Science (Class of 2026)
                 </p>
               </div>
               <button

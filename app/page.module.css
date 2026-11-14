@@ -1,4 +1,4 @@
-.mainWrapper {
+.appShell {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,234 +8,26 @@
   overflow-x: hidden;
 }
 
-.topBar {
-  background: var(--bg-surface);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border-color);
-  padding: 14px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.titleArea {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.titleRow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.appTitle {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.authorMeta {
-  font-size: 0.74rem;
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.authorMeta strong {
-  color: var(--text-primary);
-  font-weight: 700;
-}
-
-.devBadge {
-  background: rgba(37, 99, 235, 0.08);
-  border: 1px solid rgba(37, 99, 235, 0.2);
-  padding: 4px 10px;
-  border-radius: 9999px;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--accent-primary);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.devBadge:hover {
-  background: rgba(37, 99, 235, 0.16);
-  border-color: var(--accent-primary);
-  transform: translateY(-1px);
-}
-
-.devBadgeDot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent-success);
-  box-shadow: 0 0 6px var(--accent-success);
-}
-
-.topBarActions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.creditsBtn {
-  background: var(--bg-surface-solid);
-  border: 1px solid var(--border-color);
-  padding: 7px 12px;
-  border-radius: 10px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
-}
-
-.creditsBtn:hover {
-  background: rgba(37, 99, 235, 0.06);
-  color: var(--accent-primary);
-  border-color: rgba(37, 99, 235, 0.3);
-}
-
-.themeToggle {
-  background: var(--bg-surface-solid);
-  border: 1px solid var(--border-color);
-  padding: 7px 12px;
-  border-radius: 10px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
-}
-
-.themeToggle:hover {
-  background: rgba(37, 99, 235, 0.06);
-  color: var(--accent-primary);
-}
-
-/* Split-screen layout */
-.workspace {
+.mainContainer {
   flex: 1;
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 32px;
-  padding: 28px 40px 40px;
   max-width: 1600px;
+  width: 100%;
   margin: 0 auto;
+  padding: 24px 32px 40px;
+}
+
+.thesisViewWrap {
   width: 100%;
   min-height: 800px;
-}
-
-.readerPane {
-  height: 100%;
-  min-height: 720px;
-}
-
-.dashboardPane {
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  height: 100%;
-  position: sticky;
-  top: 90px;
-}
-
-.mobileTabs {
-  display: none;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
-  padding: 4px;
-  border-radius: 12px;
-  margin: 16px auto 0;
-  max-width: 340px;
-  width: 90%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
-.mobileTabBtn {
-  flex: 1;
-  padding: 8px 14px;
-  border: none;
-  background: transparent;
-  color: var(--text-secondary);
-  font-size: 0.78rem;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-}
-
-.mobileTabBtnActive {
-  background: var(--bg-surface-solid);
-  color: var(--accent-primary);
-  box-shadow: var(--shadow-sm);
-  font-weight: 700;
-}
-
-@media (max-width: 1100px) {
-  .topBar {
-    padding: 14px 20px;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .topBarActions {
-    align-self: flex-end;
-  }
-
-  .workspace {
-    grid-template-columns: 1fr;
-    height: auto;
-    min-height: unset;
-    padding: 20px 16px;
-  }
-
-  .dashboardPane {
-    position: static;
-  }
-
-  .mobileTabs {
-    display: flex;
-  }
-
-  .readerPane {
-    display: none;
-    min-height: auto;
-  }
-
-  .dashboardPane {
-    display: none;
-  }
-
-  .activeMobilePane {
-    display: flex !important;
-    width: 100%;
-    justify-content: center;
+@media (max-width: 1024px) {
+  .mainContainer {
+    padding: 16px;
   }
 }
