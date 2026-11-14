@@ -1,0 +1,21 @@
+{
+  "name": "NEXTRANS — Smart Mobility Intelligence",
+  "short_name": "NEXTRANS",
+  "description": "Enterprise Connected Bus & Transit Fleet Simulator engineered by Ayesha Batool (M245004), Gomal University Faisalabad.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F8FC",
+  "theme_color": "#1264E9",
+  "icons": [
+    {
+      "src": "/assets/nextrans-symbol.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

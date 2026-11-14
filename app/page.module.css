@@ -1,10 +1,17 @@
 .appShell {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
+  background-color: var(--bg);
+  color: var(--text-normal);
   position: relative;
+  overflow-x: hidden;
+}
+
+.mainContentWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* Prevents flex children from overflowing */
   overflow-x: hidden;
 }
 
@@ -13,21 +20,32 @@
   max-width: 1600px;
   width: 100%;
   margin: 0 auto;
-  padding: 24px 32px 40px;
+  padding: 32px 32px 48px;
 }
 
 .thesisViewWrap {
   width: 100%;
   min-height: 800px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
   overflow: hidden;
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-subtle);
 }
 
-@media (max-width: 1024px) {
+/* Tablet & Mobile Responsiveness */
+@media (max-width: 1023px) {
+  .appShell {
+    flex-direction: column;
+  }
+
   .mainContainer {
-    padding: 16px;
+    padding: 20px 20px 80px; /* 80px padding for mobile bottom nav */
+  }
+}
+
+@media (max-width: 640px) {
+  .mainContainer {
+    padding: 16px 16px 80px;
   }
 }

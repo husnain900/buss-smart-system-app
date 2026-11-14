@@ -12,7 +12,7 @@ export default function Footer({ onOpenAbout, onSelectView }) {
           <div className={styles.brandSection}>
             <div className={styles.brandTitle}>
               <span className={styles.brandDot} />
-              <span className={styles.brandName}>NEBULA TRANSIT &bull; Bus Smart System Platform</span>
+              <span className={styles.brandName}>NEBULA TRANSIT &bull; Smart Mobility Intelligence &bull; Bus Connected</span>
             </div>
             <p className={styles.attribution}>
               Designed &amp; Engineered by <strong>Ayesha Batool</strong> - Roll No: <strong>M245004</strong>

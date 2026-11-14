@@ -1,0 +1,219 @@
+.bottomBar {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .bottomBar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    z-index: 100;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    box-shadow: 0 -2px 10px rgba(20, 40, 70, 0.05);
+  }
+
+  .tabBtn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    background: transparent;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 6px 2px;
+    min-height: var(--touch-target);
+    transition: all 0.15s ease-out;
+  }
+
+  .tabBtnActive {
+    color: var(--primary);
+    font-weight: 700;
+  }
+
+  .iconWrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .dotBadge {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    background: var(--danger);
+    color: #FFFFFF;
+    font-size: 0.6rem;
+    font-weight: 800;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+
+  .tabLabel {
+    font-size: 0.65rem;
+    letter-spacing: -0.01em;
+  }
+
+  /* Sheet Overlay */
+  .sheetOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(19, 36, 61, 0.45);
+    backdrop-filter: blur(4px);
+    z-index: 200;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .bottomSheet {
+    width: 100%;
+    max-height: 80vh;
+    background: var(--surface);
+    border-top-left-radius: var(--radius-hero);
+    border-top-right-radius: var(--radius-hero);
+    padding: 12px 16px 36px;
+    overflow-y: auto;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.22s ease-out;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .sheetHeader {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .sheetHandle {
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border);
+  }
+
+  .sheetTitleRow {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sheetTitle {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .closeBtn {
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    cursor: pointer;
+  }
+
+  .sheetGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .sheetItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: var(--radius-control);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    min-height: 48px;
+    transition: all 0.15s ease;
+  }
+
+  .sheetItem:hover {
+    background: var(--primary-tint);
+    border-color: var(--primary);
+  }
+
+  .sheetItemActive {
+    background: var(--primary-tint);
+    border-color: var(--primary);
+  }
+
+  .sheetItemIcon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .sheetItemText {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+  }
+
+  .sheetItemLabel {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .sheetItemDesc {
+    font-size: 0.7rem;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .sheetBadge {
+    background: var(--danger);
+    color: #FFFFFF;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 9999px;
+  }
+
+  .sheetPill {
+    background: var(--warning);
+    color: #FFFFFF;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+}

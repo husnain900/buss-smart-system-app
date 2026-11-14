@@ -1,16 +1,30 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
 import styles from "./TopBar.module.css";
 import {
   BusIcon,
-  BookOpenIcon,
-  SlidersIcon,
-  AlertTriangleIcon,
-  AwardIcon,
+  BellIcon,
   SunIcon,
   MoonIcon,
-  RadioIcon,
-  ShieldIcon
+  ChevronDownIcon,
+  MenuIcon
 } from "./icons/Icons";
+
+const VIEW_NAMES = {
+  dashboard: "Fleet Overview",
+  fleet: "Vehicle Fleet Catalog",
+  vehicle: "3D Bus Digital Twin",
+  routes: "Live Transit Corridors",
+  passengers: "Passenger Density & Flow",
+  diagnostics: "Chassis Diagnostics & TPMS",
+  "ai-inspection": "AI Camera Defect Screening",
+  safety: "Safety Interlocks & Audit Ledger",
+  reports: "University Telemetry Reports",
+  demo: "Examiner Guided Demonstration",
+  thesis: "Academic Thesis Documentation",
+  settings: "Platform Settings"
+};
 
 export default function TopBar({
   currentView,
@@ -19,97 +33,117 @@ export default function TopBar({
   onToggleTheme,
   onOpenAbout,
   activeAlertCount = 0,
-  onAlertClick
+  onAlertClick,
+  vehicles = {},
+  selectedVehicleId = "EV-12",
+  onSelectVehicle
 }) {
+  const [timeStr, setTimeStr] = useState("");
+  const [isVehicleMenuOpen, setIsVehicleMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTimeStr(now.toLocaleTimeString("en-US", { hour12: false }) + " PKT");
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentVehicle = vehicles[selectedVehicleId] || { code: "BUS-102", name: "Nextrans Cityliner 12" };
+
   return (
     <header className={styles.topBar} role="banner">
-      <div className={styles.brandGroup}>
-        <div className={styles.logoWrap}>
-          <div className={styles.logoIcon}>
-            <BusIcon size={18} strokeWidth={2.2} />
-          </div>
-          <div className={styles.logoText}>
-            <div className={styles.logoRow}>
-              <span className={styles.brandTitle}>NEBULA TRANSIT</span>
-              <span className={styles.simChip} title="All telemetry and vehicle actuation in this academic portal are simulated">
-                DEMO / SIMULATED
-              </span>
-            </div>
-            <span className={styles.brandTagline}>Intelligence behind every journey</span>
-          </div>
+      {/* Breadcrumb / View Title */}
+      <div className={styles.leftSection}>
+        <div className={styles.breadcrumb}>
+          <span className={styles.sectionCategory}>Operations</span>
+          <span className={styles.divider}>/</span>
+          <h1 className={styles.pageTitle}>{VIEW_NAMES[currentView] || "Fleet Overview"}</h1>
         </div>
-
-        <button
-          type="button"
-          className={styles.authorBadge}
-          onClick={onOpenAbout}
-          title="Click to view Developer Profile &amp; Project Credits"
-          aria-label="View developer credentials for Ayesha Batool (Roll No: M245004)"
-        >
-          <span className={styles.authorDot} />
-          <span className={styles.authorName}>Ayesha Batool</span>
-          <span className={styles.authorRoll}>M245004</span>
-        </button>
       </div>
 
-      <nav className={styles.navSwitcher} aria-label="Main Application Modes">
-        <button
-          type="button"
-          className={`${styles.navTab} ${currentView === "fleet" ? styles.navTabActive : ""}`}
-          onClick={() => onViewChange("fleet")}
-        >
-          <RadioIcon size={14} />
-          <span>Fleet Control Room</span>
-        </button>
-        <button
-          type="button"
-          className={`${styles.navTab} ${currentView === "thesis" ? styles.navTabActive : ""}`}
-          onClick={() => onViewChange("thesis")}
-        >
-          <BookOpenIcon size={14} />
-          <span>Academic Thesis</span>
-        </button>
-        <button
-          type="button"
-          className={`${styles.navTab} ${currentView === "demo" ? styles.navTabActive : ""}`}
-          onClick={() => onViewChange("demo")}
-        >
-          <SlidersIcon size={14} />
-          <span>Teacher Demo</span>
-        </button>
-      </nav>
+      {/* Right Controls */}
+      <div className={styles.rightSection}>
+        {/* Global Vehicle Selector Dropdown */}
+        <div className={styles.vehicleSelectWrap}>
+          <button
+            type="button"
+            className={styles.vehicleDropdownBtn}
+            onClick={() => setIsVehicleMenuOpen((prev) => !prev)}
+            aria-expanded={isVehicleMenuOpen}
+            aria-label="Select active vehicle"
+          >
+            <BusIcon size={14} />
+            <span className={styles.vCode}>{currentVehicle.code}</span>
+            <span className={styles.vName}>{currentVehicle.name.split(" ")[0]}</span>
+            <ChevronDownIcon size={13} className={styles.vChevron} />
+          </button>
 
-      <div className={styles.actionsGroup}>
+          {isVehicleMenuOpen && (
+            <div className={styles.vehicleMenu} onClick={() => setIsVehicleMenuOpen(false)}>
+              {Object.values(vehicles).map((v) => (
+                <button
+                  key={v.id}
+                  type="button"
+                  className={`${styles.vehicleOption} ${v.id === selectedVehicleId ? styles.vehicleOptionActive : ""}`}
+                  onClick={() => onSelectVehicle(v.id)}
+                >
+                  <span className={styles.optCode}>{v.code}</span>
+                  <div className={styles.optText}>
+                    <span className={styles.optName}>{v.name}</span>
+                    <span className={styles.optType}>{v.type}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {/* Honest Environment Chip */}
+        <div className={styles.simBadge} title="Telemetric readings & vehicle actuation are operating in deterministic software simulation">
+          <span className={styles.simDot} />
+          <span>DEMO / SIMULATED</span>
+        </div>
+
+        {/* Live Clock */}
+        <div className={styles.clockBox}>
+          <span className="tabular-num">{timeStr || "15:00:00 PKT"}</span>
+        </div>
+
+        {/* Alert Notifications */}
         <button
           type="button"
-          className={`${styles.alertBtn} ${activeAlertCount > 0 ? styles.alertBtnActive : ""}`}
+          className={`${styles.actionIconBtn} ${activeAlertCount > 0 ? styles.actionIconBtnAlert : ""}`}
           onClick={onAlertClick}
           title={`${activeAlertCount} active system alert(s)`}
-          aria-label={`View ${activeAlertCount} active system alerts`}
+          aria-label="View system alerts"
         >
-          <AlertTriangleIcon size={14} />
-          <span className={styles.alertCount}>{activeAlertCount}</span>
+          <BellIcon size={16} />
+          {activeAlertCount > 0 && <span className={styles.notifBadge}>{activeAlertCount}</span>}
         </button>
 
+        {/* Theme Toggle */}
         <button
           type="button"
-          className={styles.creditsBtn}
-          onClick={onOpenAbout}
-          title="Project Methodology &amp; Student Attribution"
-          aria-label="View Project Credits"
-        >
-          <AwardIcon size={14} />
-          <span className={styles.creditsLabel}>Credits</span>
-        </button>
-
-        <button
-          type="button"
-          className={styles.themeBtn}
+          className={styles.actionIconBtn}
           onClick={onToggleTheme}
-          title={`Switch to ${theme === "light" ? "Dark" : "Light"} mode`}
-          aria-label="Toggle Theme"
+          title={`Switch to ${theme === "light" ? "Dark" : "Light"} theme`}
+          aria-label="Toggle visual theme"
         >
-          {theme === "light" ? <MoonIcon size={14} /> : <SunIcon size={14} />}
+          {theme === "light" ? <MoonIcon size={16} /> : <SunIcon size={16} />}
+        </button>
+
+        {/* Student Avatar / Credits Button */}
+        <button
+          type="button"
+          className={styles.studentAvatarBtn}
+          onClick={onOpenAbout}
+          title="Engineered by Ayesha Batool (M245004) • Gomal University"
+          aria-label="View developer credentials and supervisor details"
+        >
+          <span className={styles.avatarText}>AB</span>
         </button>
       </div>
     </header>

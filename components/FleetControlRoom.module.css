@@ -1,803 +1,1237 @@
-.container {
+.controlRoom {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 24px;
   width: 100%;
-}
-
-.moduleNav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.moduleTabsGroup {
-  display: flex;
-  gap: 6px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  padding: 4px;
-  border-radius: var(--radius-card);
-  overflow-x: auto;
-  max-width: 100%;
-}
-
-.tabBtn {
-  background: transparent;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--text-secondary);
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  white-space: nowrap;
-  transition: all 0.2s ease;
-  min-height: 38px;
-}
-
-.tabBtn:hover {
-  color: var(--text-primary);
-  background: rgba(255, 255, 255, 0.04);
-}
-
-.tabBtnActive {
-  background: var(--bg-card);
-  color: var(--accent-lime);
-  border: 1px solid var(--border-color);
-  box-shadow: var(--shadow-sm);
-  font-weight: 700;
-}
-
-.tabBadgeAlert {
-  background: var(--status-critical);
-  color: #FFFFFF;
-  font-size: 0.6rem;
-  font-weight: 800;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.vehicleSelector {
-  display: flex;
-  gap: 6px;
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  padding: 4px;
-  border-radius: var(--radius-card);
-}
-
-.vehicleChip {
-  background: transparent;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  color: var(--text-secondary);
-  transition: all 0.2s ease;
-}
-
-.vehicleChip:hover {
-  color: var(--text-primary);
-}
-
-.vehicleChipActive {
-  background: var(--bg-card);
-  color: var(--text-primary);
-  border: 1px solid var(--accent-lime);
-}
-
-.chipCode {
-  font-weight: 800;
-  color: var(--accent-lime);
-  font-size: 0.7rem;
-}
-
-.chipName {
-  font-weight: 600;
 }
 
 /* Interlock Banner */
 .interlockBanner {
-  background: rgba(255, 104, 117, 0.15);
-  border: 1px solid var(--status-critical);
-  color: var(--status-critical);
-  padding: 12px 18px;
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: var(--danger);
+  padding: 12px 16px;
   border-radius: var(--radius-card);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-sm);
+}
+
+/* ==============================================================
+   1. DASHBOARD VIEW (Section 4 Wireframe)
+============================================================== */
+.dashboardView {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.editorialHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.headerTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.editorialTitle {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.editorialSub {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+.headerActionGroup {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.85rem;
-  font-weight: 700;
-  box-shadow: 0 4px 12px rgba(255, 104, 117, 0.25);
 }
 
-/* Telemetry Strip */
-.telemetryBar {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-}
-
-.telemetryItem {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-card);
-  padding: 12px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.telemetryLabel {
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  font-weight: 600;
-}
-
-.telemetryValWrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.statusDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--text-muted);
-}
-
-.statusDotActive {
-  background: var(--status-success);
-  box-shadow: 0 0 8px var(--status-success);
-}
-
-.telemetryValue {
-  font-family: var(--font-display);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.textCritical {
-  color: var(--status-critical) !important;
-}
-
-.textCaution {
-  color: var(--status-caution) !important;
-}
-
-.textSuccess {
-  color: var(--status-success) !important;
-}
-
-/* Inspector View */
-.inspectorGrid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 16px;
-}
-
-.stageCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-card);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.stageHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.stageTitle {
-  font-size: 1.15rem;
-  font-weight: 800;
-  color: var(--text-primary);
-}
-
-.stageSub {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
-}
-
-.viewAngleSwitcher {
-  display: flex;
-  gap: 4px;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: 3px;
-  border-radius: 8px;
-}
-
-.angleBtn {
-  background: transparent;
+.primaryBtn {
+  background: var(--primary);
+  color: #FFFFFF;
   border: none;
-  font-size: 0.7rem;
-  padding: 4px 8px;
-  border-radius: 6px;
-  color: var(--text-secondary);
-  cursor: pointer;
-  font-weight: 600;
-}
-
-.angleBtnActive {
-  background: var(--bg-surface);
-  color: var(--accent-lime);
-}
-
-.vehicleImageWrap {
-  position: relative;
-  background: radial-gradient(circle at center, #1A2532 0%, #0B1018 70%);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 24px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 320px;
-  overflow: hidden;
-}
-
-.heroBusImage {
-  max-width: 100%;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 20px 25px rgba(0, 0, 0, 0.6));
-}
-
-.hotspotsLayer {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.hotspot {
-  position: absolute;
-  pointer-events: auto;
-  background: rgba(21, 29, 40, 0.9);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  padding: 4px 8px;
-  border-radius: 9999px;
-  font-size: 0.68rem;
+  padding: 9px 16px;
+  border-radius: var(--radius-control);
+  font-size: 0.82rem;
   font-weight: 700;
-  cursor: pointer;
   display: inline-flex;
   align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+  min-height: 40px;
+  box-shadow: 0 2px 8px rgba(23, 78, 182, 0.2);
+}
+
+.primaryBtn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.secondaryBtn {
+  background: var(--surface);
+  color: var(--text-normal);
+  border: 1px solid var(--border);
+  padding: 9px 14px;
+  border-radius: var(--radius-control);
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease-out;
+  min-height: 40px;
+}
+
+.secondaryBtn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: var(--primary-tint);
+}
+
+/* First KPI Band: 4 Equal Cards */
+.kpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.kpiCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kpiCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.kpiLabel {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: -0.01em;
+}
+
+.kpiValueRow {
+  display: flex;
+  align-items: baseline;
   gap: 6px;
-  backdrop-filter: blur(4px);
-  transform: translate(-50%, -50%);
-  transition: all 0.2s ease;
 }
 
-.hotspot:hover {
-  border-color: var(--accent-lime);
-  transform: translate(-50%, -50%) scale(1.05);
+.kpiValue {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
 }
 
-.hotspotActive {
-  border-color: var(--status-caution);
-  color: var(--status-caution);
+.kpiUnit {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--muted);
 }
 
-.hotspotCritical {
-  border-color: var(--status-critical);
-  color: var(--status-critical);
-  background: rgba(255, 104, 117, 0.2);
+.kpiFooter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
 }
 
-.hotspotPing {
-  width: 6px;
-  height: 6px;
+.statusDotOnline {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
-  background: currentColor;
-  animation: pulseSubtle 1.5s infinite ease-in-out;
+  background: var(--success);
 }
 
-.actuationPanel {
+.statusDotCrit {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--danger);
+}
+
+.kpiDelta {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.textCrit {
+  color: var(--danger) !important;
+}
+
+.textWarn {
+  color: var(--warning) !important;
+}
+
+.textOk {
+  color: var(--success) !important;
+}
+
+/* Row 2: 8/12 Bus Hero + 4/12 Stack */
+.heroSectionGrid {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: 24px;
+}
+
+.heroBusCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-hero);
+  padding: 16px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.quickActuationRow {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 
 .actuateBtn {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 10px 8px;
-  color: var(--text-primary);
-  font-size: 0.72rem;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 10px;
+  color: var(--ink);
+  font-size: 0.76rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 7px;
   min-height: var(--touch-target);
-  transition: all 0.2s ease;
+  transition: all 0.15s ease;
 }
 
 .actuateBtn:hover {
-  border-color: var(--border-focus);
+  border-color: var(--primary);
+  background: var(--primary-tint);
+  color: var(--primary);
 }
 
-.doorBtnLocked {
-  border-color: rgba(255, 255, 255, 0.15);
+.btnDoorOpen {
+  background: #ECFDF5 !important;
+  color: var(--success) !important;
+  border-color: var(--success) !important;
 }
 
-.doorBtnOpen {
-  border-color: var(--status-caution);
-  color: var(--status-caution);
-  background: rgba(255, 189, 89, 0.1);
+.btnDriveActive {
+  background: var(--primary-tint) !important;
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
 }
 
-.driveBtnActive {
-  background: var(--accent-lime-dim);
-  border-color: var(--accent-lime);
-  color: var(--accent-lime);
+.btnHazardActive {
+  background: #FFFBEB !important;
+  color: var(--warning) !important;
+  border-color: var(--warning) !important;
 }
 
-.hazardBtnActive {
-  border-color: var(--status-caution);
-  color: var(--status-caution);
-  background: rgba(255, 189, 89, 0.15);
+.btnAcActive {
+  background: #EFF6FF !important;
+  color: var(--primary) !important;
+  border-color: var(--primary) !important;
 }
 
-.acBtnActive {
-  border-color: var(--accent-primary);
-  color: var(--accent-primary);
-}
-
-/* Side Summary Card */
-.sideSummaryCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-card);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.summaryTitle {
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 10px;
-}
-
-.summaryList {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.summaryRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.78rem;
-  color: var(--text-secondary);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  padding-bottom: 8px;
-}
-
-.summaryRow strong {
-  color: var(--text-primary);
-}
-
-.academicAttributionNote {
-  margin-top: auto;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: 12px;
-  border-radius: 10px;
-  display: flex;
-  gap: 10px;
-  font-size: 0.7rem;
-  color: var(--text-secondary);
-  line-height: 1.4;
-}
-
-.academicAttributionNote strong {
-  color: var(--accent-lime);
-}
-
-/* Live Route Grid */
-.routeGrid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 16px;
-}
-
-.mapVectorCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-card);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.mapHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.mapHeader h4 {
-  font-size: 1rem;
-  font-weight: 700;
-}
-
-.routeProgressText {
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--accent-lime);
-  background: var(--accent-lime-dim);
-  padding: 3px 8px;
-  border-radius: 4px;
-}
-
-.mapSvgArea {
-  height: 320px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--border-color);
-  background: #0D141F;
-}
-
-.vectorMapSvg {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-
-.routeControls {
-  display: flex;
-  gap: 10px;
-}
-
-.routeSpeedBtn {
-  flex: 1;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  padding: 10px;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  min-height: var(--touch-target);
-}
-
-.routeSpeedBtn:hover {
-  border-color: var(--accent-lime);
-  color: var(--accent-lime);
-}
-
-.routeSideTimeline {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-card);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.routeSideTimeline h4 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 10px;
-}
-
-.timelineList {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.timelineItem {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.timelineDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: var(--accent-lime);
-  margin-top: 4px;
-}
-
-.timelineText {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.stopName {
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-
-.stopEta {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-}
-
-/* Passenger Flow View */
-.passengersGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.passengerFlowCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-card);
-  padding: 24px;
+/* Right 4/12 Stack */
+.sideStack {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.flowCardHeader {
+.sideCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sideCardHeader {
+  display: flex;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.sideCardTitle {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.sideCardPill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: var(--primary-tint);
+  color: var(--primary);
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.corridorName {
+  font-size: 0.78rem;
+  color: var(--text-normal);
+  font-weight: 500;
+}
+
+.progressBar {
+  width: 100%;
+  height: 6px;
+  background: var(--surface-alt);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+.nextStopRow {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  font-size: 0.78rem;
+}
+
+.nextStopLabel {
+  color: var(--muted);
+}
+
+.nextStopName {
+  color: var(--ink);
+}
+
+.stopSeqList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid var(--divider);
+  padding-top: 8px;
+}
+
+.stopItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.stopDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.stopText {
+  font-size: 0.74rem;
+  color: var(--text-normal);
+}
+
+.statusOkPill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: #DCFCE7;
+  color: var(--success);
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.statusCautionPill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  background: #FEF3C7;
+  color: var(--warning);
+  padding: 2px 8px;
+  border-radius: 9999px;
+}
+
+.safetyInfoList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.78rem;
+}
+
+.safetyRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-normal);
+}
+
+.viewSafetyBtn {
+  background: transparent;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 8px 12px;
+  color: var(--primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 36px;
+  margin-top: 4px;
+}
+
+.viewSafetyBtn:hover {
+  background: var(--primary-tint);
+  border-color: var(--primary);
+}
+
+/* Row 3: 7/12 Route Map + 5/12 Telemetry Charts */
+.chartsRow {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 24px;
+}
+
+.routeMapCard, .telemetryCard, .activityCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
   gap: 16px;
 }
 
-.flowCardHeader h4 {
-  font-size: 1.1rem;
-  font-weight: 700;
+.cardHeaderWithAction {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
 }
 
-.flowCardHeader p {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
+.blockTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
 }
 
-.rfidTapBtn {
-  background: var(--accent-lime);
-  color: #0B1018;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 10px;
-  font-size: 0.8rem;
-  font-weight: 700;
+.blockSub {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.tinyActionBtn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--primary);
   cursor: pointer;
-  display: inline-flex;
+  transition: all 0.15s ease;
+}
+
+.tinyActionBtn:hover {
+  background: var(--primary-tint);
+  border-color: var(--primary);
+}
+
+.mapCanvasHolder {
+  width: 100%;
+  height: 220px;
+  background: var(--surface-alt);
+  border-radius: var(--radius-control);
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.routeSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.telemetryMeters {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.meterBox {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.meterLabel {
+  font-size: 0.74rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.meterValueRow {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.meterValueRow span {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.meterUnit {
+  font-size: 0.74rem !important;
+  color: var(--muted) !important;
+  font-weight: 600 !important;
+}
+
+.meterBar {
+  width: 100%;
+  height: 6px;
+  background: var(--surface-alt);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.meterFill {
+  height: 100%;
+  background: var(--primary);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* Row 4: Recent Activity Table */
+.simStreamBadge {
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: rgba(180, 83, 9, 0.08);
+  border: 1px solid rgba(180, 83, 9, 0.2);
+  color: var(--warning);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.activityTable {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.78rem;
+}
+
+.activityTable th {
+  padding: 10px 12px;
+  color: var(--muted);
+  font-weight: 600;
+  border-bottom: 1px solid var(--divider);
+  background: var(--surface-alt);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.activityTable td {
+  padding: 12px;
+  border-bottom: 1px solid var(--divider);
+  color: var(--text-normal);
+}
+
+.levelPill {
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.04em;
+}
+
+.level_info {
+  background: #EFF6FF;
+  color: var(--primary);
+}
+
+.level_caution {
+  background: #FFFBEB;
+  color: var(--warning);
+}
+
+.level_critical {
+  background: #FEF2F2;
+  color: var(--danger);
+}
+
+.sourceSimPill {
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--muted);
+  background: var(--surface-alt);
+  padding: 2px 6px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+/* ==============================================================
+   2. FLEET CATALOG VIEW
+============================================================== */
+.fleetView, .vehicleView, .routesView, .passengersView, .diagnosticsView, .aiView, .safetyView, .reportsView, .demoView, .settingsView {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.viewHeadingRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.viewTitle {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.viewSub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 2px 0 0;
+}
+
+.fleetFilterRow {
+  display: flex;
   align-items: center;
-  gap: 8px;
-  min-height: var(--touch-target);
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 3px;
+  border-radius: var(--radius-control);
+}
+
+.filterBtn {
+  background: transparent;
+  border: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filterBtnActive {
+  background: var(--primary);
+  color: #FFFFFF;
+  font-weight: 700;
+}
+
+.fleetGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.vehicleCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   transition: all 0.2s ease;
 }
 
-.rfidTapBtn:hover {
-  background: #E2FFA4;
-  box-shadow: 0 0 12px rgba(214, 244, 90, 0.4);
+.vehicleCardSelected {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 1px var(--primary), var(--shadow-md);
 }
 
-.occupancyGauge {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 18px;
+.vCardHeader {
   display: flex;
-  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
   gap: 10px;
 }
 
-.gaugeHeader {
+.vCardCode {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--primary);
+  background: var(--primary-tint);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.vCardName {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 4px 0 2px;
+}
+
+.vCardType {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+.selectedPill {
+  font-size: 0.62rem;
+  font-weight: 800;
+  background: var(--primary);
+  color: #FFFFFF;
+  padding: 2px 7px;
+  border-radius: 4px;
+}
+
+.vCardImgWrap {
+  width: 100%;
+  height: 180px;
+  background: var(--surface-alt);
+  border-radius: var(--radius-control);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.vCardImg {
+  object-fit: contain;
+  max-width: 90%;
+  max-height: 85%;
+}
+
+.vCardSpecs {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  border-top: 1px solid var(--divider);
+  padding-top: 12px;
+}
+
+.vSpecItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.vSpecLabel {
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.vSpecItem strong {
+  font-size: 0.8rem;
+  color: var(--ink);
+}
+
+.vCardFooter {
+  margin-top: auto;
+}
+
+.selectVBtn {
+  width: 100%;
+  padding: 9px;
+  border-radius: var(--radius-control);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 38px;
+}
+
+.selectVBtn:hover {
+  background: var(--primary-tint);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.selectVBtnActive {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+}
+
+/* ==============================================================
+   3. 3D DIGITAL TWIN VIEW
+============================================================== */
+.modelTag {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: var(--radius-control);
+}
+
+.inspectorContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.actuationCenter {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.actuationTitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.actuationGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.fullActuateBtn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  min-height: 56px;
+}
+
+.fullActuateBtn:hover {
+  background: var(--primary-tint);
+  border-color: var(--primary);
+}
+
+.fullActuateBtn strong {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+
+.btnHint {
+  font-size: 0.68rem;
+  color: var(--muted);
+  display: block;
+  margin-top: 2px;
+}
+
+/* ==============================================================
+   4. ROUTES VIEW
+============================================================== */
+.progressPill {
+  font-size: 0.76rem;
+  font-weight: 700;
+  background: var(--primary-tint);
+  color: var(--primary);
+  padding: 4px 12px;
+  border-radius: 9999px;
+}
+
+.routesGrid {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: 24px;
+}
+
+.mapContainer {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.fullRouteSvg {
+  width: 100%;
+  height: 320px;
+  background: var(--surface-alt);
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border);
+}
+
+.speedSimulationRow {
+  display: flex;
+  gap: 10px;
+}
+
+.simSpeedBtn {
+  flex: 1;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 10px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-height: 40px;
+}
+
+.simSpeedBtn:hover {
+  background: var(--primary-tint);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.timelineCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.timelineTitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+}
+
+.timetableList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.timetableItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.timeDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+  margin-top: 5px;
+}
+
+.timeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timeStop {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.timeMeta {
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+/* ==============================================================
+   5. PASSENGERS VIEW
+============================================================== */
+.rfidActionBtn {
+  background: var(--primary);
+  color: #FFFFFF;
+  border: none;
+  padding: 9px 14px;
+  border-radius: var(--radius-control);
+  font-size: 0.8rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  min-height: 40px;
+}
+
+.densityCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.densityHeader {
   display: flex;
   justify-content: space-between;
-  font-size: 0.85rem;
-  color: var(--text-primary);
+  align-items: baseline;
+}
+
+.densityLabel {
+  font-size: 0.82rem;
+  color: var(--muted);
+  display: block;
+}
+
+.densityVal {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--ink);
 }
 
 .gaugeTrack {
+  width: 100%;
   height: 12px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--surface-alt);
   border-radius: 6px;
   overflow: hidden;
 }
 
 .gaugeFill {
   height: 100%;
-  background: var(--status-success);
+  background: var(--primary);
   border-radius: 6px;
-  transition: width 0.4s ease;
+  transition: width 0.3s ease;
 }
 
-.gaugeFillCritical {
-  background: var(--status-critical);
+.gaugeFillCrit {
+  background: var(--danger) !important;
 }
 
-.overcrowdingAlertBox {
-  background: rgba(255, 104, 117, 0.15);
-  border: 1px solid var(--status-critical);
-  color: var(--status-critical);
+.crowdAlert {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  color: var(--danger);
   padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 0.78rem;
-  font-weight: 700;
+  border-radius: var(--radius-control);
   display: flex;
   align-items: center;
-  gap: 8px;
-}
-
-.rfidLogTitle {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-top: 10px;
-}
-
-.rfidTable {
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.rfidHeaderRow {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr;
-  padding: 10px 14px;
-  background: var(--bg-card);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--text-muted);
-  text-transform: uppercase;
-}
-
-.rfidDataRow {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1.5fr 1fr 1fr;
-  padding: 10px 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  gap: 10px;
   font-size: 0.78rem;
-  align-items: center;
-  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.rfidLogCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.rfidCardTitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
 }
 
 .rollBadge {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 700;
-  color: var(--accent-lime);
+  color: var(--primary);
+  background: var(--primary-tint);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .statusPillBoarded {
   font-size: 0.68rem;
   font-weight: 700;
-  color: var(--status-success);
-  background: rgba(66, 200, 149, 0.12);
+  background: #DCFCE7;
+  color: var(--success);
   padding: 2px 8px;
-  border-radius: 4px;
-  width: fit-content;
+  border-radius: 9999px;
 }
 
-/* Diagnostics & TPMS */
-.diagnosticsGrid {
+/* ==============================================================
+   6. DIAGNOSTICS VIEW
+============================================================== */
+.diagGrid {
   display: grid;
-  grid-template-columns: 1.6fr 1.2fr;
-  gap: 16px;
+  grid-template-columns: 7fr 5fr;
+  gap: 24px;
 }
 
-.tpmsCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+.tpmsCard, .faultsCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  padding: 22px;
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.cardSubtitle {
-  font-size: 0.75rem;
-  color: var(--text-secondary);
+.tpmsTitle, .faultsTitle {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
 }
 
-.tpmsChassis {
+.tpmsChassisGraphic {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, 1fr);
   gap: 14px;
-  background: #0E1520;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 20px;
+  background: var(--surface-alt);
+  padding: 16px;
+  border-radius: var(--radius-control);
+  border: 1px solid var(--border);
 }
 
-.tpmsWheelBox {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  padding: 14px;
+.wheelBox {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 12px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 4px;
-  text-align: center;
 }
 
-.tpmsWheelAlert {
-  border-color: var(--status-critical);
-  background: rgba(255, 104, 117, 0.12);
+.wheelBoxCrit {
+  border-color: var(--danger) !important;
+  background: #FEF2F2 !important;
 }
 
-.wheelPos {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  font-weight: 700;
+.wName {
+  font-size: 0.72rem;
+  color: var(--muted);
 }
 
-.wheelPressure {
-  font-size: 1.4rem;
+.wPsi {
   font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--ink);
 }
 
-.tpmsActions {
+.wStatusOk {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--success);
+}
+
+.wStatusCrit {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--danger);
+}
+
+.tpmsTestButtons {
   display: flex;
   gap: 10px;
 }
 
-.faultInjectBtn {
+.faultInjectBtn, .faultResetBtn {
   flex: 1;
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
   padding: 10px;
-  border-radius: 8px;
-  color: var(--text-primary);
   font-size: 0.75rem;
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--ink);
   cursor: pointer;
-  min-height: var(--touch-target);
-  transition: all 0.2s ease;
+  min-height: 40px;
 }
 
 .faultInjectBtn:hover {
-  border-color: var(--border-focus);
+  background: #FFFBEB;
+  border-color: var(--warning);
+  color: var(--warning);
 }
 
-.faultsLedgerCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-card);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.faultResetBtn:hover {
+  background: var(--primary-tint);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
 .faultsList {
@@ -806,218 +1240,198 @@
   gap: 10px;
 }
 
-.faultItemCritical {
-  background: rgba(255, 104, 117, 0.1);
-  border: 1px solid var(--status-critical);
-  border-radius: 10px;
+.faultItemCrit {
+  background: #FEF2F2;
+  border: 1px solid #FCA5A5;
+  border-radius: var(--radius-control);
   padding: 12px;
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-.faultCodeHeader {
-  display: flex;
-  justify-content: space-between;
-}
-
-.faultCodeBadge {
-  background: var(--status-critical);
-  color: white;
-  font-weight: 800;
+.faultBadge {
+  font-family: var(--font-mono);
   font-size: 0.72rem;
-  padding: 2px 8px;
+  font-weight: 800;
+  background: var(--danger);
+  color: #FFFFFF;
+  padding: 2px 6px;
   border-radius: 4px;
 }
 
-.faultSystem {
-  font-size: 0.7rem;
-  color: var(--text-muted);
-}
-
-.faultDesc {
-  font-size: 0.78rem;
-  color: var(--text-primary);
-}
-
-.nominalStateBox {
-  background: rgba(66, 200, 149, 0.08);
-  border: 1px solid var(--status-success);
-  color: var(--status-success);
-  border-radius: 10px;
-  padding: 20px;
+.nominalBox {
+  padding: 30px;
+  background: var(--surface-alt);
+  border-radius: var(--radius-control);
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
+  text-align: center;
+  color: var(--success);
   font-size: 0.8rem;
   font-weight: 600;
 }
 
-/* AI Camera Screening */
-.aiInspectionGrid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 16px;
+/* ==============================================================
+   7. AI INSPECTION VIEW
+============================================================== */
+.disclaimerPill {
+  font-size: 0.72rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: var(--radius-control);
 }
 
-.aiInspectionCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+.aiGrid {
+  display: grid;
+  grid-template-columns: 8fr 4fr;
+  gap: 24px;
+}
+
+.aiCard, .historyCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
-  padding: 22px;
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.aiHeader {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 14px;
-}
-
-.aiDisclaimerBadge {
-  background: rgba(109, 182, 255, 0.12);
-  border: 1px solid rgba(109, 182, 255, 0.3);
-  color: var(--status-info);
-  padding: 4px 10px;
-  border-radius: 6px;
-  font-size: 0.68rem;
-  font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.testCasesPicker {
+.casePicker {
   display: flex;
   gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
 }
 
-.testCaseBtn {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.75rem;
-  cursor: pointer;
+.caseBtn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: var(--radius-control);
+  font-size: 0.74rem;
   font-weight: 600;
-  transition: all 0.2s ease;
+  color: var(--text-normal);
+  cursor: pointer;
+  white-space: nowrap;
 }
 
-.testCaseBtnActive {
-  background: var(--bg-surface);
-  color: var(--accent-lime);
-  border-color: var(--accent-lime);
+.caseBtnActive {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
 }
 
-.inspectionResultBox {
+.aiResultLayout {
   display: grid;
-  grid-template-columns: 1fr 1.6fr;
-  gap: 16px;
-  background: #0E1520;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 16px;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 20px;
+  border-top: 1px solid var(--divider);
+  padding-top: 16px;
 }
 
-.inspectionImageHolder {
-  position: relative;
-  border-radius: 8px;
-  overflow: hidden;
-  background: #000000;
+.aiImgHolder {
+  background: var(--surface-alt);
+  border-radius: var(--radius-control);
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  border: 1px solid var(--border);
 }
 
-.inspectionPreviewImg {
-  width: 100%;
-  height: auto;
+.aiPreviewImg {
   object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
-.inspectionDetails {
+.aiTextHolder {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-.inspectionStatusRow {
+.aiMetaRow {
   display: flex;
   align-items: center;
   gap: 8px;
   flex-wrap: wrap;
 }
 
-.inspectCat {
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  text-transform: uppercase;
+.aiCat {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 600;
 }
 
-.inspectStatusPill {
+.aiStatus {
   font-size: 0.68rem;
   font-weight: 800;
-  padding: 2px 8px;
+  padding: 2px 7px;
   border-radius: 4px;
 }
 
-.inspectStatusOk {
-  background: rgba(66, 200, 149, 0.15);
-  color: var(--status-success);
+.aiOk {
+  background: #DCFCE7;
+  color: var(--success);
 }
 
-.inspectStatusCrit {
-  background: rgba(255, 104, 117, 0.15);
-  color: var(--status-critical);
+.aiCrit {
+  background: #FEF2F2;
+  color: var(--danger);
 }
 
-.confidenceScore {
-  font-size: 0.7rem;
-  color: var(--text-muted);
+.aiConf {
+  font-size: 0.72rem;
+  color: var(--muted);
 }
 
-.findingsTitle {
-  font-size: 0.76rem;
+.aiSectionTitle {
+  font-size: 0.78rem;
   font-weight: 700;
-  color: var(--text-secondary);
+  color: var(--ink);
   margin-top: 4px;
 }
 
-.findingsText {
-  font-size: 0.78rem;
-  color: var(--text-primary);
-  line-height: 1.35;
+.aiParagraph {
+  font-size: 0.76rem;
+  color: var(--text-normal);
+  line-height: 1.4;
 }
 
-.confirmInspectionBtn {
-  margin-top: 8px;
-  background: var(--accent-lime);
-  color: #0B1018;
+.confirmInspectBtn {
+  background: var(--primary);
+  color: #FFFFFF;
   border: none;
-  padding: 9px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-control);
+  padding: 10px;
   font-size: 0.76rem;
   font-weight: 700;
   cursor: pointer;
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 6px;
-  width: fit-content;
-  min-height: 38px;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  min-height: 40px;
 }
 
-.inspectionHistoryCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-card);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
+.historyTitle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
 }
 
 .historyList {
@@ -1027,220 +1441,252 @@
 }
 
 .historyItem {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  padding: 10px 12px;
-  border-radius: 8px;
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  padding: 8px 10px;
+  border-radius: var(--radius-control);
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  font-size: 0.75rem;
+  gap: 2px;
+  font-size: 0.74rem;
 }
 
-.historyTime {
-  font-size: 0.65rem;
-  color: var(--text-muted);
-}
-
-.historyAction {
-  font-size: 0.7rem;
-  color: var(--accent-lime);
+.hAction {
+  color: var(--primary);
   font-weight: 600;
 }
 
-.emptyHistory {
-  color: var(--text-muted);
-  font-size: 0.75rem;
-  padding: 20px 0;
+.emptyNotice {
+  color: var(--muted);
+  font-size: 0.76rem;
   text-align: center;
+  padding: 20px;
 }
 
-/* Safety Ledger View */
-.safetyGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.safetyCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius-card);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.incidentTable {
-  border: 1px solid var(--border-color);
-  border-radius: 10px;
-  overflow: hidden;
-  max-height: 480px;
-  overflow-y: auto;
-}
-
-.incidentRow {
-  display: grid;
-  grid-template-columns: 90px 100px 1fr;
-  padding: 10px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  font-size: 0.78rem;
-  align-items: center;
-  gap: 10px;
-}
-
-.incidentTime {
-  color: var(--text-muted);
-  font-family: monospace;
-}
-
-.incidentLevel {
-  font-weight: 800;
-  font-size: 0.68rem;
-}
-
-.incidentMsg {
-  color: var(--text-primary);
-}
-
-.incidentRowCritical {
-  background: rgba(255, 104, 117, 0.08);
-  color: var(--status-critical);
-}
-
-.incidentRowCaution {
-  background: rgba(255, 189, 89, 0.08);
-  color: var(--status-caution);
-}
-
-/* Reports View */
-.reportsGrid {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.reportsCard {
-  background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+/* ==============================================================
+   8. SAFETY & 9. REPORTS & 10. DEMO VIEWS
+============================================================== */
+.safetyCardWrap, .reportCard, .settingsCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: var(--radius-card);
   padding: 24px;
+  box-shadow: var(--shadow-subtle);
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 16px;
 }
 
-.reportPreview {
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.reportMetaHeader {
+.reportHeader {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-color);
-  padding-bottom: 12px;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid var(--divider);
+  padding-bottom: 16px;
 }
 
-.reportMetaHeader h5 {
-  font-size: 0.95rem;
+.reportDocTitle {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0;
 }
 
-.reportMetaHeader span {
-  font-size: 0.72rem;
-  color: var(--text-secondary);
+.reportAuthor {
+  font-size: 0.78rem;
+  color: var(--muted);
 }
 
-.reportBadge {
-  background: var(--accent-lime-dim);
-  color: var(--accent-lime);
-  border: 1px solid rgba(214, 244, 90, 0.3);
-  font-size: 0.68rem;
+.reportSimBadge {
+  font-size: 0.65rem;
   font-weight: 800;
-  padding: 4px 10px;
-  border-radius: 6px;
+  background: rgba(180, 83, 9, 0.1);
+  color: var(--warning);
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 
 .reportStatsGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  font-size: 0.8rem;
+  gap: 14px;
+}
+
+.rItem {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .rLabel {
-  display: block;
-  font-size: 0.68rem;
-  color: var(--text-muted);
-  margin-bottom: 2px;
+  font-size: 0.72rem;
+  color: var(--muted);
 }
 
-.downloadCsvBtn {
-  background: var(--accent-lime);
-  color: #0B1018;
+.rItem strong {
+  font-size: 0.84rem;
+  color: var(--ink);
+}
+
+.csvDownloadBtn {
+  background: var(--primary);
+  color: #FFFFFF;
   border: none;
-  padding: 12px 20px;
-  border-radius: 10px;
+  border-radius: var(--radius-control);
+  padding: 12px 18px;
   font-size: 0.82rem;
   font-weight: 700;
-  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  width: fit-content;
-  min-height: var(--touch-target);
+  cursor: pointer;
+  min-height: 44px;
+  margin-top: 8px;
+}
+
+/* Demo Mode */
+.resetSimBtn {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--ink);
+  padding: 8px 14px;
+  border-radius: var(--radius-control);
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  cursor: pointer;
+  min-height: 38px;
+}
+
+.demoScenariosGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.demoCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  padding: 20px;
+  box-shadow: var(--shadow-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.downloadCsvBtn:hover {
-  background: #E2FFA4;
-  box-shadow: 0 0 16px rgba(214, 244, 90, 0.4);
+.demoCard:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-/* Responsive Breakpoints */
-@media (max-width: 1024px) {
-  .inspectorGrid, .routeGrid, .diagnosticsGrid, .aiInspectionGrid {
+.demoCardTop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--primary);
+}
+
+.demoCardTop strong {
+  font-size: 0.92rem;
+  color: var(--ink);
+}
+
+.demoCard p {
+  font-size: 0.76rem;
+  color: var(--muted);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Settings */
+.settingRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.settingRow:last-child {
+  border-bottom: none;
+}
+
+.settingRow strong {
+  font-size: 0.88rem;
+  color: var(--ink);
+  display: block;
+}
+
+.settingRow p {
+  font-size: 0.76rem;
+  color: var(--muted);
+  margin: 2px 0 0;
+}
+
+.toggleBtn {
+  background: var(--surface-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-control);
+  padding: 8px 14px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.simPill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  background: rgba(180, 83, 9, 0.1);
+  color: var(--warning);
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+
+/* ==============================================================
+   RESPONSIVENESS (320px - 1023px)
+============================================================== */
+@media (max-width: 1200px) {
+  .kpiGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .heroSectionGrid, .chartsRow, .routesGrid, .diagGrid, .aiGrid {
     grid-template-columns: 1fr;
-  }
-
-  .telemetryBar {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .actuationPanel {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .reportStatsGrid {
-    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (max-width: 640px) {
-  .telemetryBar {
+@media (max-width: 768px) {
+  .fleetGrid, .actuationGrid, .demoScenariosGrid, .reportStatsGrid {
     grid-template-columns: 1fr;
   }
-
-  .inspectionResultBox {
+  .quickActuationRow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .aiResultLayout {
     grid-template-columns: 1fr;
   }
-
-  .rfidHeaderRow, .rfidDataRow {
-    grid-template-columns: 1fr 1fr;
+  .editorialTitle {
+    font-size: 1.4rem;
   }
-
-  .incidentRow {
-    grid-template-columns: 1fr;
-    gap: 4px;
+  .editorialHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .headerActionGroup {
+    width: 100%;
+  }
+  .headerActionGroup button {
+    flex: 1;
+    justify-content: center;
   }
 }

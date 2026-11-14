@@ -48,7 +48,7 @@ export default function AboutModal({ isOpen, onClose }) {
                   <span>Academic Thesis &amp; Engineering Project</span>
                 </div>
                 <h2 id="modal-title" className={styles.title}>
-                  NEBULA TRANSIT &bull; Smart Bus Fleet Platform
+                  NEBULA TRANSIT &bull; Smart Mobility Intelligence
                 </h2>
                 <p className={styles.subtitle}>
                   Gomal University Faisalabad &bull; Department of Computer Science (Class of 2026)
